@@ -1,0 +1,123 @@
+.register{
+    background-color: #dedddd;
+    padding-top: 10vmin;
+    padding-bottom: 10vmin;
+}
+
+.form{
+    background-color: white;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-bottom: 7vmin;
+}
+
+.form label{
+    font-weight: bold;
+}
+
+.form button{
+    color: white;
+    background-color: #071f6b;
+    border-radius: 0px;
+    width: 100%;
+    border: none;
+}
+
+.form button:hover{
+    background-color: #004aad;
+}
+
+.form input{
+    border-radius: 0px;
+    border:none;
+    background-color: gainsboro;
+}
+
+.form textarea{
+    border-radius: 0px;
+    border:none;
+    background-color: gainsboro;
+}
+
+.form input:focus{
+    background-color: gainsboro;
+    box-shadow: none;
+    border-bottom: 2px solid #071f6b;
+}
+
+.form textarea:focus{
+    background-color: gainsboro;
+    box-shadow: none;
+    border-bottom: 2px solid #071f6b;
+}
+
+.form h1{
+    text-decoration: underline;
+    font-size: 30px;
+    letter-spacing: 3px;
+    margin-bottom: 7vmin;
+    color: #1d6f47;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+.card1{
+    background-color: #1d6f47;
+}
+
+.card1 hr{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.card2{
+    background-color: #071f6b;
+}
+
+.cards{
+    padding-top: 5vmin;
+    padding-bottom: 5vmin;
+    color: white;
+    margin-bottom: 3vmin;
+    padding-left: 5%;
+    padding-right: 7%;
+}
+
+.cards .subhead{
+    text-align: center;
+    font-weight: bold;
+}
+
+.card1 p{
+    font-size: small;
+}
+
+.card2 h6{
+    margin-top: 3vmin;
+}
+
+@media only screen and (max-width: 1100px) {
+    .card2 img{
+        width: 60%;
+    }
+
+    .card2 h6{
+        font-size: larger;
+    }
+
+    .card1 p{
+        font-size: larger;
+    }
+
+    .card1 img{
+        width: 70%;
+    }
+
+    .form{
+        margin-right: 3%;
+        margin-left: 3%;
+    }
+}
