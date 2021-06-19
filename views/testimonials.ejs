@@ -1,43 +1,84 @@
-<div class="demo">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div id="testimonial-slider" class="owl-carousel">
-                    <div class="testimonial">
-                        <span class="icon fa fa-quote-left"></span>
-                        <p class="description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.
-                        </p>
-                        <div class="testimonial-content">
-                            <div class="pic"><img src="images/img-1.jpg" alt=""></div>
-                            <h3 class="title">williamson</h3>
-                            <span class="post">Web Developer</span>
-                        </div>
+<link rel="stylesheet" type="text/css" href="css/testimonials.css">
+
+<div class="testimonial" id="testimonials">
+    <h1 class="headingStyle">Testimonials</h1>
+    <div class="owl-carousel owl-theme">
+        <div class="item">
+            <div class="container">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <i class="fa fa-quote-left" aria-hidden="true"></i>
+                        Lorem ipsum dolor sit amet consectetur elit. Ipsa voluptatum
+                         ipsum, laudantium minima aliquam porro? Iste,  Et, esta ah
+                         <i class="fa fa-quote-right" aria-hidden="true"></i>
                     </div>
-                    <div class="testimonial">
-                        <span class="icon fa fa-quote-left"></span>
-                        <p class="description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.
-                        </p>
-                        <div class="testimonial-content">
-                            <div class="pic"><img src="images/img-2.jpg" alt=""></div>
-                            <h3 class="title">Kristina</h3>
-                            <span class="post">Web Designer</span>
+                    <div class="testfooter">
+                        <div class="testimonial-image">
+                            <img src="images/face.jpg" class="img-fluid">
                         </div>
+                        <h3 class='person'>Jane Doe</h3>  
                     </div>
-                    <div class="testimonial">
-                        <span class="icon fa fa-quote-left"></span>
-                        <p class="description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.
-                        </p>
-                        <div class="testimonial-content">
-                            <div class="pic"><img src="images/img-3.jpg" alt=""></div>
-                            <h3 class="title">Steve Thomas</h3>
-                            <span class="post">Web Developer</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="container">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <i class="fa fa-quote-left" aria-hidden="true"></i>
+                        Lorem ipsum dolor sit amet consectetur elit. Ipsa voluptatum
+                         ipsum, laudantium minima aliquam porro? Iste,  Et, esta ah
+                         <i class="fa fa-quote-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="testfooter">
+                        <div class="testimonial-image">
+                            <img src="images/face.jpg" class="img-fluid">
                         </div>
+                        <h3 class='person'>Jane Doe</h3>  
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="container">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <i class="fa fa-quote-left" aria-hidden="true"></i>
+                        Lorem ipsum dolor sit amet consectetur elit. Ipsa voluptatum
+                         ipsum, laudantium minima aliquam porro? Iste,  Et, esta ah
+                         <i class="fa fa-quote-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="testfooter">
+                        <div class="testimonial-image">
+                            <img src="images/face.jpg" class="img-fluid">
+                        </div>
+                        <h3 class='person'>Jane Doe</h3>  
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
+<script>
+    $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:20,
+    nav:false,
+    autoplay:true,
+    autoplayTimeout:10000,
+    responsive:{
+        0:{
+            items:1
+        },
+        711:{
+            items:2
+        },
+        1000:{
+            items:3
+        }
+    }
+})
+</script>
