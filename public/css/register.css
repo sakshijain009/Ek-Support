@@ -1,4 +1,4 @@
-.register{
+.register, .donate{
     background-color: #dedddd;
     padding-top: 10vmin;
     padding-bottom: 10vmin;
@@ -69,7 +69,17 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: #1d6f47;
 }
 
-.card1 hr{
+.donateCard{
+    background-color: #1d6f47;
+    font-size: large;
+}
+
+.donateCard img{
+    margin-top: 5vmin;
+    margin-bottom: 5vmin;
+}
+
+hr{
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 

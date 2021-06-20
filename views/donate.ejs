@@ -1,4 +1,85 @@
 <%- include('partials/header'); -%>
+<link rel="stylesheet" type="text/css" href="css/register.css">
 
+<div class="donate">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-7 form">
+                <h1>Donate</h1>
+                <form>
+                    <div class="form-group">
+                        <label for="Name">Name:</label>
+                        <input type="text" class="form-control" id="Name" aria-describedby="Name" placeholder="Enter Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Email1">Email:</label>
+                        <input type="email" class="form-control" id="Email1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Contact">Contact:</label>
+                        <input type="number" class="form-control" id="Contact" aria-describedby="Contact" placeholder="Enter Contact" required>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label for="State">State:</label>
+                                <input type="text" class="form-control" id="State" aria-describedby="State" placeholder="Enter State" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label for="City">City:</label>
+                                <input type="text" class="form-control" id="City" aria-describedby="City" placeholder="Enter City" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label for="Pincode">Pincode:</label>
+                                <input type="number" class="form-control" id="Pincode" aria-describedby="Pincode" placeholder="Enter Pincode" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div class="form-group">
+                                <label for="House">House/Street:</label>
+                                <input type="text" class="form-control" id="House" aria-describedby="House" placeholder="Enter Street/House No" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Message">Type of Medicine and Quantity:</label>
+                        <textarea class="form-control" id="Message" rows="5" placeholder="Enter Here" required></textarea>
+                    </div>
+                    <label class="radio-inline" style="margin-right: 20px;">
+                        <input type="radio" name="optradio" checked>Pickup
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="optradio">Delivery
+                    </label>
+                      
+                    <button type="submit" class="btn btn-primary py-20">Submit</button>
+                </form>
+            </div>
+            <div class="col-sm-5">
+                <div class="donateCard cards">
+                    <h5 class="subhead">Donate Unused Medicines</h5><hr>
+                        <img src="images/give.png" class="img-fluid">
+                        <p>
+                            A citizen led initiative to help those in dire need of medical supplies. We have come together to collect unused medical aid as per the list below and distribute it amongst - <br>
+                            <ul>
+                               <li>Medicines ( Paracetamol, Antibiotics, Cough Syrups, Immunity Boosters, Vitamins, Fabiflu,         Montair and any other ) </li>
+                               <li>Medical equipments ( Thermometers, Oxymeters, BP Equipments, Belts, Knee Caps, Diabetes   Equipments, Steamers and any other) </li>
+                                <li>New Masks</li>
+                                <li>PPE Kits</li>
+                                <li>Face Shields</li>
+                                <li>Sanitizers</li>
+                            </ul>
+                        </p>   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <%- include('partials/footer'); -%>
