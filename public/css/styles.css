@@ -129,8 +129,6 @@ nav {
 
 
 .about-init{
-    /*border-top: 1px solid rgba(255,255,255,0.5);
-    border-left: 1px solid rgba(255,255,255,0.5);*/
     text-align: left;
     margin-top: 6vmin;
     padding: 10px;
@@ -138,25 +136,34 @@ nav {
 
 
 /* Numbers */
-.init .card-title{
-    color:#1d6f47 ;
+.init{
+    background-color: #071f6b;
+    color: white;
+}
+
+.middle-num{
+    border-left: 3px solid white;
+    border-right: 3px solid white;
+}
+
+.number{
+    padding-top: 4vmin;
+    padding-bottom: 4vmin;
+}
+
+.number h1{
+    font-size: 50px;
     font-weight: bold;
+    color: #339c50;
 }
 
-.init .card{
-    margin-top: 2vmin;
-    width: 90%;
-    max-height: 350px;
+@media only screen and (max-width: 768px){
+    .middle-num{
+        border: none;
+        border-top: 3px solid white;
+        border-bottom: 3px solid white;
+    }
 }
-
-.card-title{
-    margin-top: -10px;
-}
-
-.card img{
-    height: 180px;
-}
-
 
 /* CAROUSEL */
 #gallery{
