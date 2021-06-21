@@ -2,6 +2,44 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+/* sticky icon bar*/
+.icon-bar{
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-bar a{
+    background-color: #3b5998;
+    color: white;
+    padding: 4px 9px 4px 9px;
+}
+
+.icon-bar i{
+    animation: letszoom 3s linear alternate-reverse infinite;
+}
+
+.icon-bar .gmail{ background-color: #dd4b39;}
+.icon-bar .twitter{ background-color: #55acee;}
+.icon-bar .linkedin{ background-color: #007bb5;}
+.icon-bar .instagram{ background-color: #e95950;}
+
+/********************************/
+
+@keyframes letszoom{
+    from {
+        transform: scale(0.8);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
 .container{
     animation: loadIn 0.8s;
 }
@@ -104,34 +142,16 @@ nav {
     padding-top: 10vmin;
 }
 
-.image-init{
-    margin-left: 24%;
-    margin-right: 24%;
-    margin-top: 5vmin;
-    margin-bottom: 5vmin;
-}
-
 .car-init{
     background-color: #4f5867;
     color: white;
     padding-top: 9vmin;
     padding-bottom: 9vmin;
-    padding-left: 14%;
-    padding-right: 14%;
 }
 
-@media only screen and (max-width: 1000px) {
-    .image-init{
-        margin-left: 0;
-        margin-right: 0;
-    }
-}
-
-
-.about-init{
+.car-init p{
+    margin-top: 4vmin;
     text-align: left;
-    margin-top: 6vmin;
-    padding: 10px;
 }
 
 
@@ -188,45 +208,7 @@ nav {
         height: 300px;
     }
 }
-
-
-/* Leaders Words */
-.leaders p{
-    font-size: 20px;
-}
-
-.leaders span{
-    font-size: 5vmin;
-    color: #1d6f47;
-    font-weight: bolder;
-}
-
-.leaders .row{
-    margin-top: 10vmin;
-    vertical-align: middle;
-}
-
-.leaders img{
-    border-radius: 50%;
-    width: 90%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-@media only screen and (max-width: 700px) {  
-    .leaders{
-        text-align: center;
-    }
-
-    .leaders img{
-        height: 200px;
-        width: 44%;
-    } 
-
-    .leaders .first{
-        display: flex;
-        flex-direction: column-reverse;
-    }
-}  
+ 
 
 /*Contact Section*/
 .contact{
