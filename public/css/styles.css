@@ -23,15 +23,16 @@ nav {
 }
 
 .nav-link span{
-    color: #a6a6a6;
+    color: #778899;
     font-weight: 700;
+    text-transform: uppercase;
 }
 
 .nav-link span:hover{
     color: #1d6f47;
     font-weight: 700;
-    text-decoration: underline;
-    transition: 0.3s ease-in-out;
+    transition: 0.1s ease-in-out;
+    border-bottom: 2px solid #1d6f47;
 }
 
 .nav-item{
@@ -106,7 +107,8 @@ nav {
 .image-init{
     margin-left: 24%;
     margin-right: 24%;
-    margin-top: 3vmin;
+    margin-top: 5vmin;
+    margin-bottom: 5vmin;
 }
 
 .car-init{
@@ -114,12 +116,24 @@ nav {
     color: white;
     padding-top: 9vmin;
     padding-bottom: 9vmin;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 14%;
+    padding-right: 14%;
 }
 
-.car-init p{
-    margin-top: 4vmin;
+@media only screen and (max-width: 1000px) {
+    .image-init{
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+
+.about-init{
+    /*border-top: 1px solid rgba(255,255,255,0.5);
+    border-left: 1px solid rgba(255,255,255,0.5);*/
+    text-align: left;
+    margin-top: 6vmin;
+    padding: 10px;
 }
 
 

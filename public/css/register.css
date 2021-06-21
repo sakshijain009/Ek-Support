@@ -77,6 +77,8 @@ input[type=number]::-webkit-inner-spin-button {
 .donateCard img{
     margin-top: 5vmin;
     margin-bottom: 5vmin;
+    width: 76%;
+    margin-left: 12%;
 }
 
 hr{
