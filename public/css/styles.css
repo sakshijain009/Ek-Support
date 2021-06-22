@@ -29,16 +29,17 @@
 .icon-bar .linkedin{ background-color: #007bb5;}
 .icon-bar .instagram{ background-color: #e95950;}
 
-/********************************/
 
 @keyframes letszoom{
     from {
-        transform: scale(0.8);
+        transform: scale(0.6);
     }
     to {
         transform: scale(1);
     }
 }
+
+/********************************/
 
 .container{
     animation: loadIn 0.8s;
@@ -67,10 +68,10 @@ nav {
 }
 
 .nav-link span:hover{
-    color: #1d6f47;
+    color: #339c50;
     font-weight: 700;
     transition: 0.1s ease-in-out;
-    border-bottom: 2px solid #1d6f47;
+    border-bottom: 2px solid #339c50;
 }
 
 .nav-item{
@@ -126,7 +127,10 @@ nav {
 /* About us Divs */
 .basic{
     padding-top: 12vmin;
-    padding-bottom: 12vmin;
+}
+
+#about svg{
+    margin-bottom: 0px;
 }
 
 .are h1{
@@ -140,10 +144,23 @@ nav {
 /* Initiatives */
 #initiatives{
     padding-top: 10vmin;
+    margin-top: -12vh;
+}
+
+@media only screen and (max-width: 569px){
+    #initiatives{
+        margin-top: -10vh;
+    }
+}
+
+@media only screen and (max-width: 426px){
+    #initiatives{
+        margin-top: -6.5vh;
+    }
 }
 
 .car-init{
-    background-color: #4f5867;
+    background-color: #339c50;
     color: white;
     padding-top: 9vmin;
     padding-bottom: 9vmin;
@@ -157,27 +174,55 @@ nav {
 
 /* Numbers */
 .init{
-    background-color: #071f6b;
+    background-color: rgba(0, 0, 0, 0.9);
+    background-image:url("../images/hold.jpg");
+    background-size: 100% ;
+    background-repeat: no-repeat;
     color: white;
+    position: relative;
+}
+
+.overlay{
+    width: 100%;
+    background-color: #000;
+    opacity: 0.7;
+    position: absolute;
+    height: 100%;
 }
 
 .middle-num{
-    border-left: 3px solid white;
-    border-right: 3px solid white;
+   /* border-left: 3px solid white;
+    border-right: 3px solid white;*/
+    position: relative;
 }
 
+.middle-num::before,.last-num::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 60%;
+    width: 50%;
+    border-left: 3px solid white;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
 .number{
-    padding-top: 4vmin;
-    padding-bottom: 4vmin;
+    padding-top: 11vmin;
+    padding-bottom: 11vmin;
 }
 
 .number h1{
-    font-size: 50px;
-    font-weight: bold;
-    color: #339c50;
+    font-size: 80px;
+    font-weight: bolder;
+    color: white;
 }
 
 @media only screen and (max-width: 768px){
+    .middle-num::before,.last-num::before{
+        border-left: none;
+    }
     .middle-num{
         border: none;
         border-top: 3px solid white;

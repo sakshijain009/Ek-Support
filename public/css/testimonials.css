@@ -1,11 +1,23 @@
 .testimonial{
     background-color: #dedddd;
-    padding-top: 20vmin;
     padding-bottom: 20vmin;
 }
 
 .testimonial h1{
     color: #1d6f47;
+    text-shadow: 0px 2px 7px rgba(0,0,0,0.4);
+    border-top: 20px solid white;
+    margin-bottom: 20vmin;
+}
+
+
+.testimonial h1 span{
+    border-bottom: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    padding: 10px;
+    background-color: #339c50;
+    color: white;
 }
 
 .testimonial-card{
@@ -25,7 +37,7 @@
     width: 120px;
     border: 2px solid white;
     position: absolute;
-    top: -32%;
+    top: -30%;
     left: 50%;
     transform: translateX(-50%);
     display:flex;
@@ -34,7 +46,7 @@
   }
 
   .testfooter{
-    background-color: #1d6f47;
+    background-color: #339c50;
     position:absolute;
     height: 45%;
     width: 100%;
@@ -45,7 +57,7 @@
   .person{
     color:white;
     position: absolute;
-    top: 60%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -100%);
     font-size:1.5rem;
