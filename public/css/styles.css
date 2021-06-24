@@ -64,6 +64,15 @@
     padding-top: 12vmin;
 }
 
+.button-all{
+    background-color: #1d6f47;
+    color: white;
+    padding: 7px 25px;
+    border: none;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
 /* TOP DIV */
 .top-bar {
     background:black;
@@ -220,44 +229,54 @@ nav {
     margin-bottom: 5vmin;
 }
 
-#about blockquote{
+#about span{
     font-size: larger;
     color: gray;
 }
 
-#about svg{
-    position: absolute;
-    z-index: -10;
-}
 
 /* Initiatives */
-#initiatives{
-    padding-top: 10vmin;
-    margin-top: -12vh;
+#initiatives .inits{
+    padding: 0px !important;
 }
-
-@media only screen and (max-width: 569px){
-    #initiatives{
-        margin-top: -10vh;
-    }
+#initiatives .inits:first-child{
+    background-color: #071f6b;
+    text-transform: uppercase;
+    padding-top: 15vmin !important;
+    padding-bottom: 15vmin !important;
+    padding-left: 20px !important;
 }
-
-@media only screen and (max-width: 426px){
-    #initiatives{
-        margin-top: -6.5vh;
-    }
-}
-
-.car-init{
-    background-color: #339c50;
+#initiatives .inits:first-child h1{
     color: white;
-    padding-top: 9vmin;
-    padding-bottom: 9vmin;
 }
-
-.car-init p{
-    margin-top: 4vmin;
-    text-align: left;
+#initiatives .inits:first-child h4{
+    color: #a6a6a6;
+}
+#initiatives .inits h5{
+    color: #071f6b;
+    margin-top: 10px;
+}
+#initiatives .inits h6{
+    font-weight: bold;
+}
+#initiatives .inits h5,h6,blockquote{
+    padding-left: 20px !important;
+}
+.half-img{
+    position: relative;
+}
+.half-img blockquote{
+    position: absolute;
+    color: white;
+    top:50%;
+    transform: translateY(-50%);
+}
+.half-img blockquote,.overlay{
+    display: none;
+}
+.half-img:hover blockquote,.half-img:hover .overlay{
+    display: block;
+    transition: 2s ease-in-out;
 }
 
 
