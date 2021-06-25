@@ -73,6 +73,12 @@
     margin-bottom: 25px;
 }
 
+.button-all:hover{
+    background-color: white;
+    color: #1d6f47;
+    border: 1px solid #1d6f47;
+}
+
 /* TOP DIV */
 .top-bar {
     background:black;
@@ -99,6 +105,11 @@
     border: none;
     padding: 3px 15px;
     font-size: 13px;
+}
+
+.first_top-bar button:hover{
+    background-color: white;
+    color: #1d6f47;
 }
 
 @media only screen and (max-width: 647px){
@@ -151,15 +162,24 @@ nav {
 
 
 /* MAIN DIV */
+.main-but{
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 8px 25px;
+}
+
+.main-but:hover{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.carousel-caption{
+    margin-bottom: 15%;
+}
+
 .opening h1{
-    position: absolute;
     color: white;
     text-transform: uppercase;
-    top: 30%;
-    left: 50%;
-    width: 80%;
-    transform: translateX(-50%);
-    text-align: center;
     font-size: 9vmin;
 }
 
@@ -167,6 +187,35 @@ nav {
     height: 80vh;
 }
 
+@media only screen and (max-width: 930px){
+    .opening img{
+        height: auto;
+    }
+
+    .opening h1{
+        font-size: 6vmin;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .carousel-caption{
+        margin-bottom: 0%;
+    }
+}
+
+@media only screen and (max-width: 642px){
+    .opening h1{
+        font-size: 5vmin;
+    }
+
+    .main-but{
+        font-size: smaller;
+        padding: 7px 9px;
+    }
+    
+}
+
+/**** second part ***/
 .second-info .col-md-4{
     padding: 0px !important;
 }
@@ -206,6 +255,11 @@ nav {
     color: black;
     border: none;
     margin-bottom: 2em;
+}
+
+.second-info button:hover{
+    color: #1d6f47;
+    background-color: #fff;
 }
 
 
