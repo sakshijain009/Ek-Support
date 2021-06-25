@@ -236,28 +236,31 @@ nav {
 
 
 /* Initiatives */
-#initiatives .inits{
-    padding: 0px !important;
-}
-#initiatives .inits:first-child{
+#initiatives .inits-main{
     background-color: #071f6b;
     text-transform: uppercase;
     padding-top: 15vmin !important;
     padding-bottom: 15vmin !important;
     padding-left: 20px !important;
 }
-#initiatives .inits:first-child h1{
+
+.inits-main h1{
     color: white;
 }
-#initiatives .inits:first-child h4{
+.inits-main h4{
     color: #a6a6a6;
 }
+#initiatives .inits{
+    padding: 0px !important;
+}
+
 #initiatives .inits h5{
     color: #071f6b;
     margin-top: 10px;
 }
 #initiatives .inits h6{
     font-weight: bold;
+    margin-bottom: 25px;
 }
 #initiatives .inits h5,h6,blockquote{
     padding-left: 20px !important;
@@ -271,7 +274,7 @@ nav {
     top:50%;
     transform: translateY(-50%);
 }
-.half-img blockquote,.overlay{
+.half-img blockquote,.half-img .overlay{
     display: none;
 }
 .half-img:hover .overlay{
