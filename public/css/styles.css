@@ -518,6 +518,49 @@ nav {
 
 /* FOOTER */
 .footer{
+    background-color: #d9d9d9;
+    padding-top: 15vmin;
+    padding-bottom: 15vmin;
+}
+
+.footer a img{
+    height: 40px;
+    margin: 3px;
+}
+
+.footer a{
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: large;
+}
+
+.footer a:hover{
+    color: #1d6f47;
+    text-decoration: underline;
+}
+
+.footer h4{
+    margin-top: 40px;
+}
+
+.first-foot img{
+    height: 90px;
+}
+
+.footer h4{
+    color: #071f6b;
+}
+
+.footer p{
+    margin: 0px;
+}
+
+.footer hr{
+    border-bottom: 1px solid #778899;
+    width: 100%;
+}
+
+/*.footer{
     background-color: #4f5867;
     height: 180px;
     color: white;
@@ -533,7 +576,7 @@ nav {
 .footer img{
     height: 20px;
     margin: 3px;
-}
+}*/
 
 
 /* animation */
