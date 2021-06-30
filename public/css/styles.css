@@ -388,71 +388,27 @@ nav {
     }
 }
 
-/* Numbers */
-.init{
-    background-color: rgba(0, 0, 0, 0.9);
-    background-image:url("../images/hold.jpg");
-    background-size: 100% ;
-    background-repeat: no-repeat;
-    color: white;
-    position: relative;
-}
-
-.middle-num{
-   /* border-left: 3px solid white;
-    border-right: 3px solid white;*/
-    position: relative;
-}
-
-.middle-num::before,.last-num::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 60%;
-    width: 50%;
-    border-left: 3px solid white;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-.number{
-    padding-top: 11vmin;
-    padding-bottom: 11vmin;
-}
-
-.number h1{
-    font-size: 80px;
-    font-weight: bolder;
-    color: white;
-}
-
-@media only screen and (max-width: 768px){
-    .middle-num::before,.last-num::before{
-        border-left: none;
-    }
-    .middle-num{
-        border: none;
-        border-top: 3px solid white;
-        border-bottom: 3px solid white;
-    }
-}
 
 /*gallery section */
 
 #gallery{
-    margin-top: 20vmin;
-    margin-bottom: 20vmin;
+    padding-top: 20vmin;
 }
 
-#gallery img{
+#gallery .img-thumbnail{
     margin-top: 3vmin;
 }
 
-.news-updates{
-    border: 2px solid yellow;
+#gallery .img-thumbnail:hover{
+    transform: scale(1.04);
+	z-index: +10;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
- 
+
+#gallery .text{
+    margin-top: 5px;
+    color: grey;
+}
 
 /*Contact Section*/
 .contact{
@@ -541,6 +497,8 @@ nav {
 
 .footer h4{
     margin-top: 40px;
+    font-weight: 500;
+    font-family:sans-serif;
 }
 
 .first-foot img{
