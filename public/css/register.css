@@ -1,5 +1,5 @@
 .register, .donate{
-    background-color: #dedddd;
+    background-color: #fff;
     padding-top: 10vmin;
     padding-bottom: 10vmin;
 }
@@ -11,6 +11,7 @@
     padding-left: 5%;
     padding-right: 5%;
     margin-bottom: 7vmin;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .form label{

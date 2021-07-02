@@ -47,9 +47,11 @@
 
 .headingStyle{
     text-align: center;
-    font-size: 8vmin;
+    font-size: 10vmin;
     letter-spacing: 4px;
     margin-bottom: 10vmin;
+    color: #000;
+    font-family: 'Bitter', serif;
 }
 
 .overlay{
@@ -74,9 +76,8 @@
 }
 
 .button-all:hover{
-    background-color: white;
-    color: #1d6f47;
-    border: 1px solid #1d6f47;
+    background-color: #071f6b;
+    color: #fff;
 }
 
 /* TOP DIV */
@@ -167,6 +168,12 @@ nav {
     }
 }
 
+@media only screen and (max-width: 646px){
+    .sticky-top{
+        position: unset;
+    }
+}
+
 
 /* MAIN DIV */
 .main-but{
@@ -177,7 +184,7 @@ nav {
 }
 
 .main-but:hover{
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .carousel-caption{
@@ -196,7 +203,7 @@ nav {
     height: 80vh;
 }
 
-@media only screen and (max-width: 930px){
+@media only screen and (max-width: 1025px){
     .opening img{
         height: auto;
     }
@@ -232,6 +239,11 @@ nav {
     margin-left: 18px;
     margin-right: 15px;
 }
+.second-info .col-md-4 h3{
+    font-family: 'Bitter', serif;
+    letter-spacing: 1px;
+    font-weight: 100;
+}
 .second-info .col-md-4 button{
     margin-left: 18px;
     padding: 8px 13px;
@@ -242,7 +254,7 @@ nav {
     padding-top: 5vmin !important;
 }
 
-.second-info button:nth-child(odd){
+.button-first-last{
     background-color: #1d6f47;
     color: white;
     border: none;
@@ -258,16 +270,16 @@ nav {
     margin-top: 5vmin;
 }
 
-.second-info button:nth-child(even){
+.button-mid{
     background-color: white;
     color: black;
     border: none;
     margin-bottom: 2em;
 }
 
-.second-info button:hover{
-    color: #1d6f47;
-    background-color: #fff;
+.second-info a button:hover{
+    color: #fff;
+    background-color: #071f6b;
 }
 
 
@@ -276,7 +288,7 @@ nav {
     padding-top: 20vmin;
     padding-bottom: 20vmin;
     background-image: url("../images/backk.jfif");
-    background-position: 70% 80%;
+    background-position: 90% 70%;
     background-repeat: no-repeat;
     background-size: 40%;
 }
@@ -315,6 +327,13 @@ nav {
     text-align: left;
 }
 
+@media only screen and (max-width: 992px){
+    #initiatives .inits-main{
+        padding-top: 10vmin;
+        padding-bottom: 10vmin;
+    }
+}
+
 .inits-main h1{
     color: white;
 }
@@ -351,6 +370,7 @@ nav {
     transform: translateY(-50%);
     font-size: larger;
     padding-left: 20px;
+    padding-right: 20px;
 }
 .half-img blockquote,.half-img .overlay1{
     display: none;
@@ -392,10 +412,10 @@ nav {
 .awards::before{
     content: "";
     position: absolute;
-    top: 0px;
+    top: 210px;
     right: 0px;
     bottom: 0px;
-    left: 300px;
+    left: 230px;
     background-image: url('../images/award.png');
     background-repeat: no-repeat;
     opacity: 0.2;
@@ -432,10 +452,20 @@ nav {
     padding-top: 5vmin;
     padding-bottom: 10vmin;
     padding-right: 20px;
-    margin-top: 20vmin;
+    margin-top: 10vmin;
     margin-left: 20%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.image-overlay{
+    background-color: rgba(255,255,255,0.2);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    opacity: 0;
+    z-index: 10;
+}
+
 .gallery .images{
     display: grid;
     grid-template-columns: auto auto;
@@ -449,7 +479,7 @@ nav {
 .gallery-item{
     height: auto;
     margin: 0.5rem;
-
+    position: relative;
 }
 
 .gallery-item img{
@@ -459,8 +489,9 @@ nav {
     border-radius: 15px;
 }
 
-.gallery-item img:hover{
-    filter: brightness(0.5) grayscale(70);
+.image-overlay:hover{
+    opacity: 1;
+    transition: 0.4s ease-in-out;
 }
 
 .gallery-item:nth-child(2){
@@ -475,19 +506,66 @@ nav {
     position: absolute;
     bottom: -50px !important;
     background-color: rgba(255,255,255,0.3);
+    margin-right: 390px;
+    padding: 15px;
+    border-left:10px solid rgba(255,255,255,0.01);
+    border-right:10px solid rgba(255,255,255,0.01);
+    border-top:3px solid rgba(255,255,255,0.01);
+    border-bottom:3px solid rgba(255,255,255,0.01);
 }
 
 .gallery a .carousel-control-prev-icon{
     position: absolute;
     bottom: -50px !important;
     background-color: rgba(255,255,255,0.3);
+    margin-left: 390px;
+    padding: 15px;
+    border-left:10px solid rgba(255,255,255,0.01);
+    border-right:10px solid rgba(255,255,255,0.01);
+    border-top:3px solid rgba(255,255,255,0.01);
+    border-bottom:3px solid rgba(255,255,255,0.01);
+}
+
+.awards .carousel-control-prev-icon{
+    position: absolute;
+    top:0px;
+    right: 0px;
+    background-color: rgba(255,255,255,0.3);
+    padding: 13px;
+    border-left:10px solid rgba(255,255,255,0.01);
+    border-right:10px solid rgba(255,255,255,0.01);
+    border-top:3px solid rgba(255,255,255,0.01);
+    border-bottom:3px solid rgba(255,255,255,0.01);
+}
+
+.awards .carousel-control-next-icon{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    background-color: rgba(255,255,255,0.3);
+    padding: 13px;
+    border-left:10px solid rgba(255,255,255,0.01);
+    border-right:10px solid rgba(255,255,255,0.01);
+    border-top:3px solid rgba(255,255,255,0.01);
+    border-bottom:3px solid rgba(255,255,255,0.01);
+}
+
+.awards .carousel-control-prev{
+    left: 300px;
 }
 
 @media only screen and (max-width: 1000px){
     #gallery{
-        padding-bottom: 15vmin;
         overflow: hidden;
+        text-align: center;
+        background-image: url('../images/volunteering.png');
+        background-repeat: no-repeat;
+        background-position: top right;
     }
+    #gallery h1{
+        display: none;
+    }
+
     #gallery .container{
         display: flex;
         flex-direction: column-reverse;
@@ -503,17 +581,27 @@ nav {
     }
 
     .awards{
+
         display: unset;
         width: 100% !important;
         position: unset;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
     .gallery a .carousel-control-next-icon{
-        bottom: -25px !important;
+        bottom: -40px !important;
+        margin-right: 300px;
     }
     
     .gallery a .carousel-control-prev-icon{
-        bottom: -25px !important;
+        bottom: -40px !important;
+        margin-left: 300px;
+    }
+}
+
+@media only screen and (max-width: 606px){
+    .gallery-item{
+        grid-column: span 2;
     }
 }
 
@@ -543,7 +631,7 @@ nav {
 }
 
 .contact button:hover{
-    background-color: #004aad;
+    background-color: #1d6f47;
 }
 
 .contact input{
@@ -583,19 +671,23 @@ nav {
 /* FOOTER */
 .footer{
     background-color: #d9d9d9;
-    padding-top: 15vmin;
-    padding-bottom: 15vmin;
+    padding-top: 5vmin;
+    padding-bottom: 5vmin;
 }
 
 .footer a img{
-    height: 40px;
+    height: 25px;
     margin: 3px;
+}
+
+.footer p{
+    font-size: 18px;
 }
 
 .footer a{
     text-decoration: none;
     color: rgba(0, 0, 0, 0.6);
-    font-size: large;
+    font-size: 16px;
 }
 
 .footer a:hover{
@@ -604,13 +696,14 @@ nav {
 }
 
 .footer h4{
-    margin-top: 40px;
+    margin-top: 30px;
+    font-size: 21px;
     font-weight: 500;
     font-family:sans-serif;
 }
 
 .first-foot img{
-    height: 90px;
+    height: 70px;
 }
 
 .footer h4{
@@ -619,11 +712,23 @@ nav {
 
 .footer p{
     margin: 0px;
+    font-size: 16px;
 }
 
 .footer hr{
     border-bottom: 1px solid #778899;
     width: 100%;
+}
+
+.footer button{
+    background-color: #071f6b;
+    margin-top: 10px;
+    border: none;
+    border-radius: 0px;
+}
+
+.footer button:hover{
+    background-color: #1d6f47;
 }
 
 

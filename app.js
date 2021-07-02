@@ -21,6 +21,13 @@ const volunteerSchema={
 	reason: String,
 	date: Date
   };
+
+  const contactSchema={
+	name: String,
+	email: String,
+	message: String,
+	date: Date
+  };
   
   const donateSchema={
 	name: String,
@@ -38,6 +45,7 @@ const volunteerSchema={
 /**************Collections****************/
 const volunteer = mongoose.model("volunteer",volunteerSchema);
 const donate = mongoose.model("donate",donateSchema);
+const contact = mongoose.model("contact",contactSchema);
 
 //get requests
 app.get("/",(req,res)=>{
@@ -83,6 +91,20 @@ app.post("/donate",(req,res)=>{
 		address: req.body.street,
 		quantity: req.body.message,
 		delivery: req.body.optradio,
+  		date:today
+	});
+	console.log(details);
+	details.save();
+	res.redirect("/");
+});
+
+app.post("/contact",(req,res)=>{
+	const today=new Date();
+	console.log(req.body);
+	const details = new contact({
+		name: req.body.name,
+  		email: req.body.email,
+		message: req.body.message,
   		date:today
 	});
 	console.log(details);
