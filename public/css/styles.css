@@ -282,6 +282,13 @@ nav {
     background-color: #071f6b;
 }
 
+@media only screen and (max-width: 769px){
+    .mid-second-info{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
 
 /* About us Divs */
 #about{
@@ -599,9 +606,80 @@ nav {
     }
 }
 
+@media only screen and (max-width: 951px){
+    #gallery{
+        background-image: unset;
+    }
+
+    .awards::before{
+        opacity: 0;
+    }
+
+    .awards{
+        min-width: 100vw;
+    }
+
+    .awards h3{
+        font-size: 50px;
+    }
+
+    .awards img{
+        width: 200px !important;
+    }
+
+    .awards .carousel-control-prev{
+        left: 500px;
+    }
+}
+
+@media only screen and (max-width: 747px){
+    .awards .carousel-control-prev{
+        left: 400px;
+    }
+}
+
 @media only screen and (max-width: 606px){
     .gallery-item{
         grid-column: span 2;
+    }
+
+    .awards .carousel-control-prev{
+        left: 300px;
+    }
+
+}
+
+@media only screen and (max-width: 486px){
+    .awards::before{
+        opacity: 0.3;
+    }
+}
+
+@media only screen and (max-width: 456px){
+    .gallery a .carousel-control-next-icon{
+        margin-right: 250px;
+    }
+    
+    .gallery a .carousel-control-prev-icon{
+        margin-left: 250px;
+    }
+}
+
+@media only screen and (max-width: 452px){
+    .awards .carousel-control-prev{
+        left: 240px;
+    }
+}
+
+@media only screen and (max-width: 402px){
+    .gallery a .carousel-control-next-icon{
+        margin-right: 200px;
+        bottom: -30px !important;
+    }
+    
+    .gallery a .carousel-control-prev-icon{
+        margin-left: 200px;
+        bottom: -30px !important;
     }
 }
 

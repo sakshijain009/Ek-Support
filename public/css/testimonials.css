@@ -1,11 +1,11 @@
 .testimonial{
-    background-color: #dedddd;
+    background-color: #F0F0F0;
     padding-bottom: 20vmin;
     padding-top: 20vmin;
 }
 
 .testimonial h1{
-  color: gray;
+  color: #444;
 }
 .testimonial .testimonial-text i:first-child{
    margin-right: 14px;
@@ -67,6 +67,12 @@
 
   @media only screen and (max-width: 767px){
     .testimonial-text{
-      font-size: 20px;
+      font-size: 17px;
+    }
+  }
+
+  @media only screen and (max-width: 400px){
+    .testimonial-text{
+      font-size: 14px;
     }
   }
