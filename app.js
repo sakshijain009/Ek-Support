@@ -52,6 +52,10 @@ app.get("/",(req,res)=>{
 	res.render("home");
 });
 
+app.get("/upload",(req,res)=>{
+	res.render("upload");
+});
+
 app.get("/register",(req,res)=>{
 	res.render("register");
 });
