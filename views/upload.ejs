@@ -9,13 +9,20 @@
 
 <div class="container workpart">
     <div class="leftpart">
+        <form method="POST" action="/upload" enctype="multipart/form-data">
+            <div class="fileUpload">
+                <input type="file" name="file1" id="file1" required>
+                <input type="file" name="file2" id="file2" required>
+                <input type="file" name="file3" id="file3" required>
+                <input type="file" name="file4" id="file4" required>
+                <span>Slide No: <b><%= items.length+2 %></b></span>
+                <button class="preview" type="submit">Upload</button>
+            </div>
+        </form>
         <form>
             <div class="fileUpload">
-                <input type="file" name="file1" id="file1">
-                <input type="file" name="file2" id="file2">
-                <input type="file" name="file3" id="file3">
-                <input type="file" name="file4" id="file4">
-                <button class="preview">Upload</button>
+                <input type="number" required min="2" max="<%= items.length+1 %>" placeholder="Enter Number">
+                <button class="preview" type="submit">Delete Slide</button>
             </div>
         </form>
     </div>

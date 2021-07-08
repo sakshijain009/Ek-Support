@@ -53,6 +53,11 @@
     padding: 20px;
 }
 
+.fileUpload span{
+    margin-bottom: 6px;
+    color: #071f6b;
+}
+
 .fileUpload input{
     margin-bottom: 20px;
 }

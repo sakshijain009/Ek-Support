@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
+const fs = require('fs');
 
 const app = express();
 
@@ -9,10 +10,16 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/eksupport",{useNewUrlParser:true,useUnifiedTopology: true});
+//mongodb connection
+require('./server/database/database')();
+const volunteer = require('./server/model/volunteer');
+const donate = require('./server/model/donate');
+const contact = require('./server/model/contact');
+const upload = require('./server/model/upload');
+const store = require('./server/middleware/multer')
 
 /*****************SCHEMAS********************/
-const volunteerSchema={
+/*const volunteerSchema={
 	name: String,
 	email: String,
 	contact: Number,
@@ -40,20 +47,26 @@ const volunteerSchema={
 	quantity: String,
 	delivery: String,
 	date: Date
-  };
+  };*/
 
 /**************Collections****************/
-const volunteer = mongoose.model("volunteer",volunteerSchema);
+/*const volunteer = mongoose.model("volunteer",volunteerSchema);
 const donate = mongoose.model("donate",donateSchema);
-const contact = mongoose.model("contact",contactSchema);
+const contact = mongoose.model("contact",contactSchema);*/
 
 //get requests
 app.get("/",(req,res)=>{
 	res.render("home");
 });
 
-app.get("/upload",(req,res)=>{
-	res.render("upload");
+app.get("/upload",async (req,res)=>{
+	const item = await upload.find({}, (err, items) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('An error occurred', err);
+        }
+    });
+	res.render('upload', { items: item });
 });
 
 app.get("/register",(req,res)=>{
@@ -115,6 +128,76 @@ app.post("/contact",(req,res)=>{
 	details.save();
 	res.redirect("/");
 });
+
+app.post("/upload",store.fields([
+	{
+		name: 'file1', maxCount: 1
+  	}, 
+  	{
+		name: 'file2', maxCount: 1
+  	},
+	{
+		name: 'file3', maxCount: 1
+  	},
+	{
+		name: 'file4', maxCount: 1
+  	}
+	]),(req,res,next)=>{
+		const files = req.files;
+		console.log(req.files);
+
+		if(!files){
+			const error = new Error('Please choose files');
+			error.httpStatusCode = 400;
+			return next(error)
+		}
+
+		let img1 = fs.readFileSync(files.file1[0].path).toString('base64');
+		let img2 = fs.readFileSync(files.file2[0].path).toString('base64');
+		let img3 = fs.readFileSync(files.file3[0].path).toString('base64');
+		let img4 = fs.readFileSync(files.file4[0].path).toString('base64');
+
+		let finalImg = {
+			file1:{
+				filename : files.file1[0].originalname,
+            	contentType : files.file1[0].mimetype,
+            	imageBase64 : img1
+			},
+			file2:{
+				filename : files.file2[0].originalname,
+            	contentType : files.file2[0].mimetype,
+            	imageBase64 : img2
+			},
+			file3:{
+				filename : files.file3[0].originalname,
+            	contentType : files.file3[0].mimetype,
+            	imageBase64 : img3
+			},
+			file4:{
+				filename : files.file4[0].originalname,
+            	contentType : files.file4[0].mimetype,
+            	imageBase64 : img4
+			}
+		}
+		let newUpload = new upload(finalImg);
+		newUpload
+                .save()
+                .then(() => {
+                    console.log("success uploading images");
+					res.redirect("/#gallery");
+                })
+                .catch(error =>{
+                    if(error){
+                        if(error.name === 'MongoError' && error.code === 11000){
+                            console.log("File already exists");
+                        }
+						console.log("error");
+						console.log("unable to upload");
+						res.redirect("/");
+                    }
+                })	
+});
+
 
 //server
 app.listen(3000, function() {
