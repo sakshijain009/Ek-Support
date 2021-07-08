@@ -6,28 +6,12 @@ const uploadSchema = new mongoose.Schema({
             type : String,
             unique : true,
             required: true
-        },
-        contentType : {
-            type: String,
-            required : true
-        },
-        imageBase64 : {
-            type : String,
-            required: true
         }
     },
     file2:{
         filename : {
             type : String,
             unique : true,
-            required: true
-        },
-        contentType : {
-            type: String,
-            required : true
-        },
-        imageBase64 : {
-            type : String,
             required: true
         }
     },
@@ -36,28 +20,12 @@ const uploadSchema = new mongoose.Schema({
             type : String,
             unique : true,
             required: true
-        },
-        contentType : {
-            type: String,
-            required : true
-        },
-        imageBase64 : {
-            type : String,
-            required: true
         }
     },
     file4:{
         filename : {
             type : String,
             unique : true,
-            required: true
-        },
-        contentType : {
-            type: String,
-            required : true
-        },
-        imageBase64 : {
-            type : String,
             required: true
         }
     }

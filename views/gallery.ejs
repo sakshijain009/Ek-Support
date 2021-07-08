@@ -25,30 +25,31 @@
             </div>
           </div> 
           <!-------------------------------image-->
-          
+          <% if(items.length>0) { %>
+          <% items.forEach(e => {  %>
           <div class="carousel-item">
             <div class="images">
               <div class="gallery-item">
                 <div class="image-overlay"></div>
-                <img src="images/gallery_1.jpg">
+                <img src="uploads/<%= e.file1.filename %>">
               </div>
               <div class="gallery-item">
                 <div class="image-overlay"></div>
-                <img src="images/gallery_2.jpg">              
+                <img src="uploads/<%= e.file2.filename %>">              
               </div>
               <div class="gallery-item">
                 <div class="image-overlay"></div>
-                <img src="images/gallery_3.jpg">
+                <img src="uploads/<%= e.file3.filename %>">
               </div>
               <div class="gallery-item">
                 <div class="image-overlay"></div>
-                <img src="images/gallery_4.jpg">              
+                <img src="uploads/<%= e.file4.filename %>">              
               </div>
             </div>
           </div> 
 
-
-
+          <% }) %>
+        <% } %>
 
           <!-------------------------------image-->  
         </div>

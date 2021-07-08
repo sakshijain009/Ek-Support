@@ -55,8 +55,15 @@ const donate = mongoose.model("donate",donateSchema);
 const contact = mongoose.model("contact",contactSchema);*/
 
 //get requests
-app.get("/",(req,res)=>{
-	res.render("home");
+app.get("/",async (req,res)=>{
+	const item = await upload.find({}, (err, items) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('An error occurred', err);
+        }
+    });
+	console.log(item);
+	res.render('home', { items: item });
 });
 
 app.get("/upload",async (req,res)=>{
@@ -66,6 +73,7 @@ app.get("/upload",async (req,res)=>{
             res.status(500).send('An error occurred', err);
         }
     });
+	console.log(item);
 	res.render('upload', { items: item });
 });
 
@@ -152,31 +160,18 @@ app.post("/upload",store.fields([
 			return next(error)
 		}
 
-		let img1 = fs.readFileSync(files.file1[0].path).toString('base64');
-		let img2 = fs.readFileSync(files.file2[0].path).toString('base64');
-		let img3 = fs.readFileSync(files.file3[0].path).toString('base64');
-		let img4 = fs.readFileSync(files.file4[0].path).toString('base64');
-
 		let finalImg = {
 			file1:{
-				filename : files.file1[0].originalname,
-            	contentType : files.file1[0].mimetype,
-            	imageBase64 : img1
+				filename : files.file1[0].filename,
 			},
 			file2:{
-				filename : files.file2[0].originalname,
-            	contentType : files.file2[0].mimetype,
-            	imageBase64 : img2
+				filename : files.file2[0].filename,
 			},
 			file3:{
-				filename : files.file3[0].originalname,
-            	contentType : files.file3[0].mimetype,
-            	imageBase64 : img3
+				filename : files.file3[0].filename,
 			},
 			file4:{
-				filename : files.file4[0].originalname,
-            	contentType : files.file4[0].mimetype,
-            	imageBase64 : img4
+				filename : files.file4[0].filename,
 			}
 		}
 		let newUpload = new upload(finalImg);
