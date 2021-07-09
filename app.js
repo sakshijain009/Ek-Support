@@ -3,12 +3,20 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const fs = require('fs');
+const dotenv = require("dotenv");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const cookieParser = require("cookie-parser");
 
+dotenv.config({ path: './.env' });
 const app = express();
+
+const authController = require('./controllers/auth');
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
+app.use(cookieParser());
 
 //mongodb connection
 require('./server/database/database')();
@@ -66,15 +74,19 @@ app.get("/",async (req,res)=>{
 	res.render('home', { items: item });
 });
 
-app.get("/upload",async (req,res)=>{
-	const item = await upload.find({}, (err, items) => {
-        if (err) {
-            console.log(err);
-            res.status(500).send('An error occurred', err);
-        }
-    });
-	console.log(item);
-	res.render('upload', { items: item });
+app.get("/upload",authController.isLoggedIn, async (req,res)=>{
+	if(req.user){
+		const item = await upload.find({}, (err, items) => {
+			if (err) {
+				console.log(err);
+				res.status(500).send('An error occurred', err);
+			}
+		});
+		console.log(item);
+		res.render('upload', { items: item });
+	}else{
+		res.redirect("/login");
+	}
 });
 
 app.get("/register",(req,res)=>{
@@ -85,7 +97,44 @@ app.get("/donate",(req,res)=>{
 	res.render("donate");
 });
 
+app.get("/login",(req,res)=>{
+	res.render("login",{display:'none'});
+});
+
 //post request
+app.post('/login', async (req, res) => {
+
+	try {
+	  console.log(req.body);
+	  const logid = req.body.logid;
+	  const pwd = req.body.pwd;
+	  let hashedPassword = await bcrypt.hash(process.env.SECRET_KEY, 8);
+	  if(logid==='12345' && (await bcrypt.compare(pwd, hashedPassword))) {
+  
+		  const id = logid;
+		  console.log("id :" + id);
+		  const token = jwt.sign({ id }, process.env.JWT_SECRET, {
+			expiresIn: process.env.JWT_EXPIRES_IN
+		  });
+  
+		  const cookieOptions = {
+			expires: new Date(
+			  Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+			),
+			httpOnly: true
+		  };
+		  res.cookie('jwt', token, cookieOptions);
+		  console.log(jwt);
+		  res.status(200).redirect("/upload");
+	  }else{
+		  res.render('login',{display:'block'});
+	  }
+	} catch (error) {
+	  console.log(error);
+	}
+  });
+
+
 app.post("/volunteer",(req,res)=>{
 	const today=new Date();
 	console.log(req.body);
@@ -192,6 +241,10 @@ app.post("/upload",store.fields([
                     }
                 })	
 });
+
+//LOGOUT request---------------------------------------------------
+app.get("/logout", authController.logout);
+
 
 
 //server
