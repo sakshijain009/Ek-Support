@@ -1,11 +1,11 @@
 <%- include('partials/header'); -%>
 <link rel="stylesheet" type="text/css" href="css/upload.css">
 
-
 <div class="logoutcontainer">
     <span>Edit Content Here</span>
     <a href="/logout">Logout</a>
 </div>
+
 
 <div class="container workpart">
     <div class="leftpart">
@@ -15,26 +15,34 @@
                 <input type="file" name="file2" id="file2" required>
                 <input type="file" name="file3" id="file3" required>
                 <input type="file" name="file4" id="file4" required>
+                <input type="text" value="<%= items.length+2 %>" disabled id="slide" name="slide">
                 <span>Slide No: <b><%= items.length+2 %></b></span>
                 <button class="preview" type="submit">Upload</button>
             </div>
         </form>
         <form>
             <div class="fileUpload">
-                <input type="number" required min="2" max="<%= items.length+1 %>" placeholder="Enter Number">
+                <input type="number" required min="2" max="<%= items.length+1 %>" placeholder="Enter Slide Number">
                 <button class="preview" type="submit">Delete Slide</button>
             </div>
         </form>
+        <form method="POST" action="/preview">
+            <div class="fileUpload">
+                <input type="number" required min="2" max="<%= items.length+1 %>" placeholder="Enter Slide Number" id="preview" name="preview">
+                <button class="preview" type="submit">Preview</button>
+            </div>
+        </form>
     </div>
+    <div class="rights">
     <div class="rightpart">
         <div class="gallery-preview">
             <div class="images">
                 <div class="gallery-item">
-                  <img src="none">
+                  <img src="none" />
                   <span class="image-preview-text">Image1</span>
                 </div>
                 <div class="gallery-item">
-                  <img src="none">
+                  <img src="none" >
                   <span class="image-preview-text">Image2</span>              
                 </div>
                 <div class="gallery-item">
@@ -47,6 +55,25 @@
                 </div>
               </div>
         </div>
+    </div>
+    <div class="rightpart" style="display: <%= display %>">
+        <div class="gallery-preview">
+            <div class="images">
+                <div class="gallery-item-2">
+                  <img  src="uploads/<%= status[0] %>" />
+                </div>
+                <div class="gallery-item-2">
+                  <img src="uploads/<%= status[1] %>" >             
+                </div>
+                <div class="gallery-item-2">
+                  <img src="uploads/<%= status[2] %>">
+                </div>
+                <div class="gallery-item-2">
+                  <img src="uploads/<%= status[3] %>">              
+                </div>
+              </div>
+        </div>
+    </div>
     </div>
 </div>
 

@@ -90,7 +90,7 @@ form{
     grid-auto-flow: dense;
 }
 
-.gallery-item{
+.gallery-item,.gallery-item-2{
     height: auto;
     margin: 0.5rem;
     position: relative;
@@ -105,10 +105,22 @@ form{
     display: none;
 }
 
-.gallery-item:nth-child(2){
+.gallery-item:nth-child(2),.gallery-item-2:nth-child(2){
     grid-row: span 2;
 }
 
-.gallery-item:nth-child(4){
+.gallery-item:nth-child(4),.gallery-item-2:nth-child(4){
     grid-column: span 2;
+}
+
+.rights{
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-item-2 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
 }

@@ -28,6 +28,11 @@ const uploadSchema = new mongoose.Schema({
             unique : true,
             required: true
         }
+    },
+    slideNumber:{
+        type: Number,
+        unique:true,
+        required:true
     }
 })
 

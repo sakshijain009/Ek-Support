@@ -83,7 +83,15 @@ app.get("/upload",authController.isLoggedIn, async (req,res)=>{
 			}
 		});
 		console.log(item);
-		res.render('upload', { items: item });
+		res.render('upload', { items: item,status:['none','none','none','none'] ,display:'none'});
+	}else{
+		res.redirect("/login");
+	}
+});
+
+app.get("/getin",authController.isLoggedIn,(req,res)=>{
+	if(req.user){
+		res.redirect("/upload");
 	}else{
 		res.redirect("/login");
 	}
@@ -186,6 +194,27 @@ app.post("/contact",(req,res)=>{
 	res.redirect("/");
 });
 
+//Preview images------------------------------------
+app.post("/preview",async (req,res)=>{
+	console.log(req.body);
+	const item = await upload.find({}, (err, items) => {
+		if (err) {
+			console.log(err);
+			res.status(500).send('An error occurred', err);
+		}
+	});
+
+	const partiItem = await upload.find({slideNumber:req.body.preview}, (err, items) => {
+		if (err) {
+			console.log(err);
+			res.status(500).send('An error occurred', err);
+		}
+	});
+	console.log(partiItem);
+	res.render("upload", { items: item,status:[partiItem[0].file1.filename,partiItem[0].file2.filename,partiItem[0].file3.filename,partiItem[0].file4.filename],display:'block' });
+	
+});
+//Upload images------------------------------------
 app.post("/upload",store.fields([
 	{
 		name: 'file1', maxCount: 1
@@ -199,9 +228,16 @@ app.post("/upload",store.fields([
 	{
 		name: 'file4', maxCount: 1
   	}
-	]),(req,res,next)=>{
+	]),async (req,res,next)=>{
 		const files = req.files;
 		console.log(req.files);
+		const item = await upload.find({}, (err, items) => {
+			if (err) {
+				console.log(err);
+				res.status(500).send('An error occurred', err);
+			}
+		});
+		const slide = item.length+2;
 
 		if(!files){
 			const error = new Error('Please choose files');
@@ -221,14 +257,15 @@ app.post("/upload",store.fields([
 			},
 			file4:{
 				filename : files.file4[0].filename,
-			}
+			},
+			slideNumber: slide
 		}
 		let newUpload = new upload(finalImg);
 		newUpload
                 .save()
                 .then(() => {
                     console.log("success uploading images");
-					res.redirect("/#gallery");
+					res.redirect("/upload");
                 })
                 .catch(error =>{
                     if(error){
@@ -237,7 +274,7 @@ app.post("/upload",store.fields([
                         }
 						console.log("error");
 						console.log("unable to upload");
-						res.redirect("/");
+						res.redirect("/upload");
                     }
                 })	
 });
