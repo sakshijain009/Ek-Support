@@ -15,3 +15,13 @@
     color: #071f6b;
 }
 
+.login button{
+    background-color: #071f6b;
+    border: none;
+    border-radius: 0px;
+}
+
+.login button:hover{
+    background-color: #1d6f47;
+}
+

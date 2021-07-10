@@ -55,14 +55,6 @@ app.get("/upload",authController.isLoggedIn, async (req,res)=>{
 	}
 });
 
-app.get("/getin",authController.isLoggedIn,(req,res)=>{
-	if(req.user){
-		res.redirect("/upload");
-	}else{
-		res.redirect("/login");
-	}
-});
-
 app.get("/register",(req,res)=>{
 	res.render("register");
 });
@@ -71,8 +63,12 @@ app.get("/donate",(req,res)=>{
 	res.render("donate");
 });
 
-app.get("/login",(req,res)=>{
-	res.render("login",{display:'none'});
+app.get("/login",authController.isLoggedIn,(req,res)=>{
+	if(req.user){
+		res.redirect("/upload");
+	}else{
+		res.render("login",{display:'none'});
+	}
 });
 
 
@@ -142,7 +138,7 @@ app.post("/donate",(req,res)=>{
   		city:req.body.city,
 		state:req.body.state,
 		pincode: req.body.pincode,
-		address: req.body.street,
+		street: req.body.street,
 		quantity: req.body.message,
 		delivery: req.body.optradio,
   		date:today
