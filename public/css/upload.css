@@ -90,11 +90,18 @@ form{
     grid-auto-flow: dense;
 }
 
-.gallery-item,.gallery-item-2{
+.gallery-item{
     height: auto;
     margin: 0.5rem;
     position: relative;
     background-color: tomato;
+}
+
+.gallery-item-2{
+    height: auto;
+    margin: 0.5rem;
+    position: relative;
+    background-color: transparent;
 }
 
 .gallery-item img{

@@ -21,8 +21,8 @@ exports.isLoggedIn = async(req,res,next)=>{  //Middleware
 			console.log(decoded);
 
 			//Check if the user still exists
-            if(decoded.id === '12345'){
-                req.user = 'EkSupport';
+            if(decoded.id === process.env.SECRET_ID){
+                req.user = process.env.SECRET_KEY;
                 return next();
             }else{
                 console.log("please login");

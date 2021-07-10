@@ -20,9 +20,9 @@
                 <button class="preview" type="submit">Upload</button>
             </div>
         </form>
-        <form>
+        <form method="POST" action="/deleteslide">
             <div class="fileUpload">
-                <input type="number" required min="2" max="<%= items.length+1 %>" placeholder="Enter Slide Number">
+                <input type="number" required min="2" max="<%= items.length+1 %>" placeholder="Enter Slide Number" id="delete" name="delete">
                 <button class="preview" type="submit">Delete Slide</button>
             </div>
         </form>

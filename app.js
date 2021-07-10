@@ -26,41 +26,7 @@ const contact = require('./server/model/contact');
 const upload = require('./server/model/upload');
 const store = require('./server/middleware/multer')
 
-/*****************SCHEMAS********************/
-/*const volunteerSchema={
-	name: String,
-	email: String,
-	contact: Number,
-	city: String,
-	state: String,
-	reason: String,
-	date: Date
-  };
-
-  const contactSchema={
-	name: String,
-	email: String,
-	message: String,
-	date: Date
-  };
   
-  const donateSchema={
-	name: String,
-	email: String,
-	contact: Number,
-	city: String,
-	state: String,
-	pincode: String,
-	street: String,
-	quantity: String,
-	delivery: String,
-	date: Date
-  };*/
-
-/**************Collections****************/
-/*const volunteer = mongoose.model("volunteer",volunteerSchema);
-const donate = mongoose.model("donate",donateSchema);
-const contact = mongoose.model("contact",contactSchema);*/
 
 //get requests
 app.get("/",async (req,res)=>{
@@ -109,7 +75,11 @@ app.get("/login",(req,res)=>{
 	res.render("login",{display:'none'});
 });
 
-//post request
+
+
+
+
+/**********POST REQUESTS *****************/
 app.post('/login', async (req, res) => {
 
 	try {
@@ -117,7 +87,7 @@ app.post('/login', async (req, res) => {
 	  const logid = req.body.logid;
 	  const pwd = req.body.pwd;
 	  let hashedPassword = await bcrypt.hash(process.env.SECRET_KEY, 8);
-	  if(logid==='12345' && (await bcrypt.compare(pwd, hashedPassword))) {
+	  if(logid===process.env.SECRET_ID && (await bcrypt.compare(pwd, hashedPassword))) {
   
 		  const id = logid;
 		  console.log("id :" + id);
@@ -143,6 +113,9 @@ app.post('/login', async (req, res) => {
   });
 
 
+
+
+//Submit volunteer form-----------------------------------
 app.post("/volunteer",(req,res)=>{
 	const today=new Date();
 	console.log(req.body);
@@ -160,6 +133,9 @@ app.post("/volunteer",(req,res)=>{
 	res.redirect("/");
 });
 
+
+
+//Submit donate form--------------------------------------
 app.post("/donate",(req,res)=>{
 	const today=new Date();
 	console.log(req.body);
@@ -180,6 +156,9 @@ app.post("/donate",(req,res)=>{
 	res.redirect("/");
 });
 
+
+
+//Submit contact form--------------------------------------
 app.post("/contact",(req,res)=>{
 	const today=new Date();
 	console.log(req.body);
@@ -193,6 +172,8 @@ app.post("/contact",(req,res)=>{
 	details.save();
 	res.redirect("/");
 });
+
+
 
 //Preview images------------------------------------
 app.post("/preview",async (req,res)=>{
@@ -214,6 +195,58 @@ app.post("/preview",async (req,res)=>{
 	res.render("upload", { items: item,status:[partiItem[0].file1.filename,partiItem[0].file2.filename,partiItem[0].file3.filename,partiItem[0].file4.filename],display:'block' });
 	
 });
+
+
+//DELETE SLIDE OF GALLERY------------------------------------
+app.post("/deleteslide",async (req,res)=>{
+	console.log(req.body);
+	const item = await upload.findOne({slideNumber: req.body.delete}, (err, items) => {
+		if (err) {
+			console.log(err);
+			res.status(500).send('An error occurred', err);
+		}
+	});
+	console.log(item);
+	const filea = 'public/uploads/' + item.file1.filename;
+	const fileb = 'public/uploads/' + item.file2.filename;
+	const filec = 'public/uploads/' + item.file3.filename;
+	const filed = 'public/uploads/' + item.file4.filename;
+
+	fs.unlink(filea, function (err) {
+		if (err) throw err;
+		console.log('File deleted!');
+	});
+	fs.unlink(fileb, function (err) {
+		if (err) throw err;
+		console.log('File deleted!');
+	});
+	fs.unlink(filec, function (err) {
+		if (err) throw err;
+		console.log('File deleted!');
+	});
+	fs.unlink(filed, function (err) {
+		if (err) throw err;
+		console.log('File deleted!');
+	});
+	
+	await upload.deleteOne({slideNumber: req.body.delete}, (err, items) => {
+		if (err) {
+			console.log(err);
+			res.status(500).send('An error occurred', err);
+		}
+	});
+	
+	await upload.updateMany({slideNumber: {$gt : req.body.delete}}, {$inc:{slideNumber:-1}},(err, items) => {
+		if (err) {
+			console.log(err);
+			res.status(500).send('An error occurred', err);
+		}
+	});
+
+	res.redirect("/upload");
+});
+
+
 //Upload images------------------------------------
 app.post("/upload",store.fields([
 	{
