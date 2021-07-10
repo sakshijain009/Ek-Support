@@ -419,13 +419,14 @@ nav {
 .awards::before{
     content: "";
     position: absolute;
-    top: 210px;
+    top: 150px;
     right: 0px;
     bottom: 0px;
     left: 230px;
     background-image: url('../images/award.png');
     background-repeat: no-repeat;
     opacity: 0.2;
+    overflow: hidden;
 }
 .awards{
     background-color: #1d6f47;

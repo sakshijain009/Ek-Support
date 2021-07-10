@@ -1,5 +1,5 @@
 .logoutcontainer{
-    width: 100vw;
+    width: 100%;
     background-color: lightgray;
     padding: 10px 0px;
     display: flex;
@@ -43,6 +43,24 @@
 
 .workpart{
     display: flex;
+}
+
+@media only screen and (max-width: 1200px){
+    .workpart{
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+
+    .rightpart{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .gallery-preview{
+        width: 100% !important;
+    }
+
 }
 
 .fileUpload{
