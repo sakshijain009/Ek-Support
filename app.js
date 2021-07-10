@@ -36,7 +36,7 @@ app.get("/",async (req,res)=>{
             res.status(500).send('An error occurred', err);
         }
     });
-	console.log(item);
+	
 	res.render('home', { items: item });
 });
 
@@ -48,7 +48,7 @@ app.get("/upload",authController.isLoggedIn, async (req,res)=>{
 				res.status(500).send('An error occurred', err);
 			}
 		});
-		console.log(item);
+		
 		res.render('upload', { items: item,status:['none','none','none','none'] ,display:'none'});
 	}else{
 		res.redirect("/login");
@@ -83,14 +83,12 @@ app.get("/login",(req,res)=>{
 app.post('/login', async (req, res) => {
 
 	try {
-	  console.log(req.body);
 	  const logid = req.body.logid;
 	  const pwd = req.body.pwd;
 	  let hashedPassword = await bcrypt.hash(process.env.SECRET_KEY, 8);
 	  if(logid===process.env.SECRET_ID && (await bcrypt.compare(pwd, hashedPassword))) {
   
 		  const id = logid;
-		  console.log("id :" + id);
 		  const token = jwt.sign({ id }, process.env.JWT_SECRET, {
 			expiresIn: process.env.JWT_EXPIRES_IN
 		  });
@@ -102,7 +100,6 @@ app.post('/login', async (req, res) => {
 			httpOnly: true
 		  };
 		  res.cookie('jwt', token, cookieOptions);
-		  console.log(jwt);
 		  res.status(200).redirect("/upload");
 	  }else{
 		  res.render('login',{display:'block'});
@@ -118,7 +115,6 @@ app.post('/login', async (req, res) => {
 //Submit volunteer form-----------------------------------
 app.post("/volunteer",(req,res)=>{
 	const today=new Date();
-	console.log(req.body);
 	const details = new volunteer({
 		name: req.body.name,
   		email: req.body.email,
@@ -161,14 +157,12 @@ app.post("/donate",(req,res)=>{
 //Submit contact form--------------------------------------
 app.post("/contact",(req,res)=>{
 	const today=new Date();
-	console.log(req.body);
 	const details = new contact({
 		name: req.body.name,
   		email: req.body.email,
 		message: req.body.message,
   		date:today
 	});
-	console.log(details);
 	details.save();
 	res.redirect("/");
 });
@@ -177,7 +171,6 @@ app.post("/contact",(req,res)=>{
 
 //Preview images------------------------------------
 app.post("/preview",async (req,res)=>{
-	console.log(req.body);
 	const item = await upload.find({}, (err, items) => {
 		if (err) {
 			console.log(err);
@@ -191,7 +184,6 @@ app.post("/preview",async (req,res)=>{
 			res.status(500).send('An error occurred', err);
 		}
 	});
-	console.log(partiItem);
 	res.render("upload", { items: item,status:[partiItem[0].file1.filename,partiItem[0].file2.filename,partiItem[0].file3.filename,partiItem[0].file4.filename],display:'block' });
 	
 });
@@ -207,10 +199,10 @@ app.post("/deleteslide",async (req,res)=>{
 		}
 	});
 	console.log(item);
-	const filea = 'public/uploads/' + item.file1.filename;
-	const fileb = 'public/uploads/' + item.file2.filename;
-	const filec = 'public/uploads/' + item.file3.filename;
-	const filed = 'public/uploads/' + item.file4.filename;
+	const filea = './public/uploads/' + item.file1.filename;
+	const fileb = './public/uploads/' + item.file2.filename;
+	const filec = './public/uploads/' + item.file3.filename;
+	const filed = './public/uploads/' + item.file4.filename;
 
 	fs.unlink(filea, function (err) {
 		if (err) throw err;
