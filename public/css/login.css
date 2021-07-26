@@ -1,0 +1,27 @@
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15vmin;
+    padding-bottom: 15vmin;
+}
+
+.login form{
+    width: 60%;
+    text-align: center;
+}
+
+.login a{
+    color: #071f6b;
+}
+
+.login button{
+    background-color: #071f6b;
+    border: none;
+    border-radius: 0px;
+}
+
+.login button:hover{
+    background-color: #1d6f47;
+}
+
